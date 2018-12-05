@@ -27,9 +27,9 @@
   </head>
   <body>
     <script src="./js/headtrackr.js"></script>
-    <canvas id="compare" width="320" height="240" style="display:none"></canvas>
-    <video id="vid" autoplay loop width="320" height="240"></video>
-    <canvas id="overlay" width="320" height="240"></canvas>
+    <canvas id="compare" width="640" height="480" style="display:none"></canvas>
+    <video id="vid" autoplay loop width="640" height="480"></video>
+    <canvas id="overlay" width="640" height="480"></canvas>
     <p>
       <input type="button" onclick="setImage(1);" value="笑い男" />
       <input type="button" onclick="setImage(0);" value="ルンバマン" />
@@ -60,7 +60,8 @@
         if (event.detection == "CS") {
           overlayContext.translate(event.x, event.y)
           overlayContext.rotate(event.angle-(Math.PI/2));
-          overlayContext.drawImage(image,(-(event.height/2 + 25)) >> 0, (-(event.height/2 + 25)) >> 0, event.height + 50, event.height + 50);
+          imageSize = 40;
+          overlayContext.drawImage(image,(-(event.height + imageSize)/2) >> 0, (-(event.height + imageSize)/2) >> 0, event.height + imageSize, event.height + imageSize);
           overlayContext.rotate((Math.PI/2)-event.angle);
           overlayContext.translate(-event.x, -event.y);
         }
